@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      : إسم مادة الاختبار
+    </div>
+    <div class="card-body">
+      
+      {% if not_primary == 'True' %}
+      <h5 class="card-title">Special title treatment</h5>
+      {% elif not_primary == 'False' %}
+      <h5 class="card-title">لقد ادخلت المتغيرات بشكل خاطئ</h5>
+      {% endif %}
+        
+      
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        دخوال قاعة الامتحان
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">تسجيل الدخوال إلى قاعة الامتحان</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" novalidate>
+              {% csrf_token %}
+              <div class="modal-body">
+                <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Id Teacher</label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="number" name="teacher_id" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Id Examination Room </label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="number" name="room_id" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                <input type="submit" value="تحقق" class="btn btn-primary">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      ساعتان   : زمن الامتحان
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

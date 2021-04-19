@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container pb-5">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Solutions</h5>
+            <table class="table" >
+                <thead style="background-color: #e3f2fd;">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">created_dt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in students %}
+                  <tr>
+                    <th scope="col"> <a href="{% url 'solutions' item.created_by.id item.subject.id item.id %}" > {{item.name}} </a></th>
+                    <td>{{item.subject}}</td>
+                    <td>{{item.created_dt}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

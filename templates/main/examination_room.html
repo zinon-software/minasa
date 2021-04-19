@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="Post">
+  {% csrf_token %} 
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for question in questions %}
+        <div class="card text-center ">
+          <div class="card-header">
+             {{question.question}}
+          </div>
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios1{{question}}" value="option1">
+              <label class="form-check-label" for="exampleRadios1{{question}}">
+                 {{question.answer_1}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios2{{question}}" value="option2">
+              <label class="form-check-label" for="exampleRadios2{{question}}">
+                 {{question.answer_2}}
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios3{{question}}" value="option3">
+              <label class="form-check-label" for="exampleRadios3{{question}}">
+                {{question.answer_3}}
+              </label>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            {{question.grades}} = الدرجات  
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div  style="margin-left: 50%; margin-bottom: 8%;">
+    <br>
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      إنهاء
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">تعبئة الاسم</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="POST" novalidate>
+                {% csrf_token %}
+                <div class="modal-body">
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputPassword6" class="col-form-label">إدخل اسمك الرباعي </label>
+                    </div>
+                    <div class="col-auto">
+                      <input type="text" name="name" class="form-control" id="inputPassword6" >
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                  <input type="submit" value="إرسال" class="btn btn-primary">
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    <!-- <input type="submit" value="إرسال" class="btn btn-primary"> -->
+  </div>
+</form>  
+
+{% endblock content %}

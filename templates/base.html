@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>{% block title %}منصة إختبار{% endblock %}</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="https://cdn0.iconfinder.com/data/icons/social-networks-and-media-flat-icons/136/Social_Media_Socialmedia_network_share_socialnetwork_network-22-512.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Bootstrap
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'teacher' %}">Profail</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+              {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+                <!-- Default dropstart button -->
+                <div class="btn-group dropstart me-4">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{user.username}}
+                    </button>
+                    <ul class="dropdown-menu">
+                    <!-- Dropdown menu links -->
+                    <li><a class="dropdown-item" href="{% url 'my_account' %}">My account</a></li>
+                    <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <!-- <button type="button" class="btn btn-success me-4">Singin</button> -->
+                <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                    التسجيل  كمعلم
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">التسعير</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <style type="text/css">
+                            .pricingTable{
+                              color: #fff;
+                              background: #fff;
+                              font-family: 'Ubuntu', sans-serif;
+                              text-align: center;
+                              padding: 0 25px 30px;
+                              margin: 0 10px;
+                              border-radius: 20px;
+                              position: relative;
+                              z-index: 1;
+                          }
+                          .pricingTable:before{
+                              content: "";
+                              background: #ff5b5a;
+                              width: 93%;
+                              height: 220px;
+                              border-radius: 20px 0 100% 0;
+                              position: absolute;
+                              top: 0;
+                              left: 0;
+                              z-index: -1;
+                          }
+                          .pricingTable .pricingTable-header{
+                              padding: 45px 10px 25px;
+                              margin: 0 0 15px;
+                          }
+                          .pricingTable .title{
+                              font-size: 30px;
+                              font-weight: 600;
+                              letter-spacing: 2px;
+                              text-transform: uppercase;
+                              margin: 0;
+                          }
+                          .pricingTable .pricing-icon{
+                              color: #ff5b5a;
+                              background: #fff;
+                              font-size: 45px;
+                              line-height: 110px;
+                              width: 110px;
+                              height: 110px;
+                              margin: 0 auto 20px;
+                              border-radius: 100px;
+                              box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 0 0 10px rgba(255, 255, 255, 0.3);
+                          }
+                          .pricingTable .pricing-content{
+                              padding: 0;
+                              margin: 0 0 20px;
+                              list-style: none;
+                          }
+                          .pricingTable .pricing-content li{
+                              color: #999;
+                              font-size: 17px;
+                              font-weight: 500;
+                              line-height: 27px;
+                              text-transform: uppercase;
+                              margin: 0 0 5px;
+                          }
+                          .pricingTable .price-value{
+                              color: #ff3838;
+                              font-weight: 600;
+                              margin: 0 0 20px;
+                          }
+                          .pricingTable .price-value .amount{
+                              font-size: 50px;
+                              line-height: 50px;
+                              display: inline-block;
+                          }
+                          .pricingTable .price-value .duration{
+                              font-size: 35px;
+                              line-height: 35px;
+                              opacity: 0.7;
+                          }
+                          .pricingTable .pricingTable-signup a{
+                              color: #fff;
+                              background: #ff5b5a;
+                              font-size: 25px;
+                              font-weight: 600;
+                              text-transform: uppercase;
+                              padding: 12px 0;
+                              margin: 0 auto;
+                              border-radius: 50px;
+                              display: block;
+                              transition: all 0.3s ease 0s;
+                          }
+                          .pricingTable .pricingTable-signup a:hover{
+                              letter-spacing: 3px;
+                              box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.3) inset;
+                          }
+                          .pricingTable.green:before,
+                          .pricingTable.green .pricingTable-signup a{
+                              background: #77b852;
+                          }
+                          .pricingTable.green .pricing-icon,
+                          .pricingTable.green .price-value{
+                              color: #77b852;
+                          }
+                          .pricingTable.blue:before,
+                          .pricingTable.blue .pricingTable-signup a{
+                              background: #7f9bff;
+                          }
+                          .pricingTable.blue .pricing-icon,
+                          .pricingTable.blue .price-value{
+                              color: #7f9bff;
+                          }
+                          @media only screen and (max-width: 990px){
+                              .pricingTable{ margin-bottom: 40px; }
+                          }
+                          </style>
+                          
+                          <div class="demo">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-md-4 col-sm-6">
+                                          <div class="pricingTable">
+                                              <div class="pricingTable-header">
+                                                  <h3 class="title">الباقة المجانية </h3>
+                                              </div>
+                                              <div class="pricing-icon">
+                                                  <i class="fas fa-paper-plane"></i>
+                                              </div>
+                                              <ul class="pricing-content">
+                                                  <li>50GB Disk Space</li>
+                                                  <li>50 Email Accounts</li>
+                                                  <li>50GB Bandwidth</li>
+                                                  <li>Maintenance</li>
+                                                  <li>15 Subdomains</li>
+                                              </ul>
+                                              <div class="price-value">
+                                                  <span class="amount">$0.00</span>
+                                                  <span class="duration">/mo</span>
+                                              </div>
+                                              <div class="pricingTable-signup">
+                                                  <a href="{% url 'signup' %}">مجاناً</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4 col-sm-6">
+                                          <div class="pricingTable green">
+                                              <div class="pricingTable-header">
+                                                  <h3 class="title">الباقة الذهبية</h3>
+                                              </div>
+                                              <div class="pricing-icon">
+                                                  <i class="fas fa-paper-plane"></i>
+                                              </div>
+                                              <ul class="pricing-content">
+                                                  <li>50GB Disk Space</li>
+                                                  <li>50 Email Accounts</li>
+                                                  <li>50GB Bandwidth</li>
+                                                  <li>Maintenance</li>
+                                                  <li>15 Subdomains</li>
+                                              </ul>
+                                              <div class="price-value">
+                                                  <span class="amount">$9.99</span>
+                                                  <span class="duration">/mo</span>
+                                              </div>
+                                              <div class="pricingTable-signup">
+                                                  <a href="#">الذهبية</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4 col-sm-6">
+                                        <div class="pricingTable blue">
+                                            <div class="pricingTable-header">
+                                                <h3 class="title">الباقة البرنزية</h3>
+                                            </div>
+                                            <div class="pricing-icon">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </div>
+                                            <ul class="pricing-content">
+                                                <li>50GB Disk Space</li>
+                                                <li>50 Email Accounts</li>
+                                                <li>50GB Bandwidth</li>
+                                                <li>Maintenance</li>
+                                                <li>15 Subdomains</li>
+                                            </ul>
+                                            <div class="price-value">
+                                                <span class="amount">$19.99</span>
+                                                <span class="duration">/mo</span>
+                                            </div>
+                                            <div class="pricingTable-signup">
+                                                <a href="#">البرنزية</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            {% endif %}
+          </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+      <ol class="breadcrumb my-4">
+        {% block breadcrumb %}
+        {% endblock %}
+      </ol>
+      {% block content %}
+      
+      {% endblock content %}
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

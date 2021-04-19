@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container pb-5">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Examination Room</h5>
+          <div class="mb-4">
+            <!-- <a href="#" class="btn btn-primary">New Room</a> -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            إنشاء غرفة اختبار
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">إنشاء غرفة امتحان جديدة</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" novalidate>
+                      {% csrf_token %}
+                      <div class="modal-body">
+                        <div class="row g-3 align-items-center">
+                          <div class="col-auto">
+                            <label for="inputPassword6" class="col-form-label">إدخل إسم الغرفة </label>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" name="name" class="form-control" id="inputPassword6" >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                        <input type="submit" value="حفظ" class="btn btn-primary">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+            <table class="table" >
+                <thead style="background-color: #e3f2fd;">
+                  <tr>
+                    <th scope="col">Name Room</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Id Teacher</th>
+                    <th scope="col">Id Room</th>
+                    <th scope="col">Solutions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for item in subject %}
+                  <tr>
+                    <td > <a href="{% url 'questions' item.created_by.id item.id %}" > {{ item.name}} </a> </td>
+                    <td>{{ item.created_dt }}</td>
+                    <td>{{ item.created_by.id}}</td>
+                    <td>{{ item.id }}</td>
+                    <td > <a href="{% url 'students' item.created_by.id item.id %}" > Solutions {{ item.name}} </a> </td>
+                  </tr>
+                  {%endfor%}
+  
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
