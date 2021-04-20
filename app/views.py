@@ -48,7 +48,7 @@ def examination_room(request, teacher_id, room_id):
         return redirect('index')
 
 
-    return render(request, 'main/examination_room.html', {'questions':questions})
+    return render(request, 'main/examination_room.html', {'questions':questions, 'subject':subject,})
 
 
 
