@@ -2,7 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-
+QUESTION_TYPE = (
+    ('A', 'خيارات'),
+    ('B', 'صح وخطأ'),
+    ('C', 'وصل'),
+)
 
 class Subject(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
@@ -14,11 +18,6 @@ class Subject(models.Model):
 
 
 class Questions(models.Model):
-    QUESTION_TYPE = (
-        ('A', 'خيارات'),
-        ('B', 'صح وخطأ'),
-        ('C', 'وصل'),
-    )
     subject = models.ForeignKey(Subject,related_name='topics',on_delete=models.CASCADE)
     created_by = models.ForeignKey(User,related_name='topics',on_delete=models.CASCADE)
     question = models.CharField(max_length=255, null=True, blank=True)
