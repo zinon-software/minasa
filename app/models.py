@@ -22,7 +22,6 @@ class Questions(models.Model):
     created_by = models.ForeignKey(User,related_name='topics',on_delete=models.CASCADE)
     question = models.CharField(max_length=255, null=True, blank=True)
     #question_type = models.CharField(max_length=2, choices=QUESTION_TYPE, default = 'A')
-    trueAndfalse = models.BooleanField(null=True, blank=True)
     answer_1 = models.CharField(max_length=255, null=True, blank=True)
     choice_1 = models.BooleanField(default=False, null=True, blank=True)
     answer_2 = models.CharField(max_length=255, null=True, blank=True)
@@ -31,6 +30,7 @@ class Questions(models.Model):
     choice_3 = models.BooleanField(default=False, null=True, blank=True)
     grades = models.IntegerField()
     created_dt = models.DateTimeField(auto_now_add=True)
+    trueAndfalse = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return self.question
