@@ -31,7 +31,7 @@ def examination_room(request, teacher_id, room_id):
     questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     if request.method == 'POST':
-        name = request.POST.get('name')+ ' ' + str(random.randint(100,1000000))
+        name = request.POST.get('name')+ ' ( ' + str(random.randint(100,1000000)) + ')'
         student_by = Students(name=name, created_by=subject.created_by, subject=subject)
         student_by.save()
         for question in questions:
