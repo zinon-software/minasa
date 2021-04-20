@@ -5,14 +5,14 @@
 <div class="container">
   <div class="card text-center">
     <div class="card-header">
-      : إسم مادة الاختبار
+      <h2> منصة إختبار</h1>
     </div>
     <div class="card-body">
       
       {% if not_primary == 'True' %}
       <h5 class="card-title">سجل دخولك الى قاعة الامتحان </h5>
       {% elif not_primary == 'False' %}
-      <h5 class="card-title">لقد ادخلت المتغيرات بشكل خاطئ</h5>
+      <h5 class="card-title" style="color: rgb(238, 6, 6);"> !! لقد ادخلت المتغيرات بشكل خاطئ</h5>
       {% endif %}
         
       
@@ -20,7 +20,7 @@
       
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        دخوال قاعة الامتحان
+        دخول قاعة الامتحان
       </button>
       
       <!-- Modal -->
@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="card-footer text-muted">
-      ساعتان   : زمن الامتحان
+      الزمن التقريبي للامتحان   : ساعتان
     </div>
   </div>
 </div>
