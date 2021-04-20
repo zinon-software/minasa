@@ -29,14 +29,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">تسجيل الدخوال إلى قاعة الامتحان</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close m-1" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" novalidate>
               {% csrf_token %}
               <div class="modal-body">
                 <div class="row g-3 align-items-center">
                   <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Id Teacher</label>
+                    <label for="inputPassword6" class="col-form-label">معرف المعلم : Id Teacher</label>
                   </div>
                   <div class="col-auto">
                     <input type="number" name="teacher_id" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
@@ -46,7 +46,7 @@
               <div class="modal-body">
                 <div class="row g-3 align-items-center">
                   <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">Id Examination Room </label>
+                    <label for="inputPassword6" class="col-form-label">معرف قاعة الامتحان  : Id Room </label>
                   </div>
                   <div class="col-auto">
                     <input type="number" name="room_id" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">

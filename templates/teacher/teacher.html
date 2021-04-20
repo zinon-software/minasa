@@ -22,7 +22,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="staticBackdropLabel">إنشاء غرفة امتحان جديدة</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button type="button" class="btn-close m-1" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="POST" novalidate>
                       {% csrf_token %}
@@ -48,11 +48,11 @@
             <table class="table" >
                 <thead style="background-color: #e3f2fd;">
                   <tr>
-                    <th scope="col">Name Room</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Id Teacher</th>
-                    <th scope="col">Id Room</th>
-                    <th scope="col">Solutions</th>
+                    <th scope="col">إسم غرفة الامتحان</th>
+                    <th scope="col">تاريخ الانشاء</th>
+                    <th scope="col">معرف المعلم</th>
+                    <th scope="col">معرف غرفة الامتحان</th>
+                    <th scope="col">الاجابات</th>
                   </tr>
                 </thead>
                 <tbody>
