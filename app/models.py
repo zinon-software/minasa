@@ -22,7 +22,7 @@ class Questions(models.Model):
     subject = models.ForeignKey(Subject,related_name='topics',on_delete=models.CASCADE)
     created_by = models.ForeignKey(User,related_name='topics',on_delete=models.CASCADE)
     question = models.CharField(max_length=255, null=True, blank=True)
-    shirt_size = models.CharField(max_length=1, choices=QUESTION_TYPE, null=True, blank=True)
+    question_type = models.CharField(max_length=1, choices=QUESTION_TYPE, null=True, blank=True)
     trueAndfalse = models.BooleanField(default=False, null=True, blank=True)
     answer_1 = models.CharField(max_length=255, null=True, blank=True)
     choice_1 = models.BooleanField(default=False, null=True, blank=True)
