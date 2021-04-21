@@ -45,6 +45,12 @@ def examination_room(request, teacher_id, room_id):
             elif slou == 'option3':
                 data = Solutions(question=question, student_by=student_by, solution=question.answer_3)
                 data.save()
+            elif slou == 'yes':
+                data = Solutions(question=question, student_by=student_by, solution='صح')
+                data.save()
+            elif slou == 'no':
+                data = Solutions(question=question, student_by=student_by, solution='خطأ')
+                data.save()
         return redirect('index')
 
 
