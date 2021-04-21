@@ -17,13 +17,11 @@
               </div>
               <br>
               <div class="card-footer text-muted ">
+                <p>نوع السؤال</p>
                 {{form.question_type}}
               </div>
-              <div class="card-footer text-muted ">
-                {{form.trueAndfalse}}
-              </div>
-              <br>
               <div class="card-body">
+              <p> اجابة سوال الخيارات</p>
                 <div class="container">
                   <div class="row row-cols-2">
                     <div class="col">{{form.answer_1}}</div>
@@ -35,6 +33,11 @@
                   </div>
                 </div>
               </div>
+              <div class="card-footer text-muted ">
+                <p> اجابة سوال الصح و الخطأ</p>
+                {{form.trueAndfalse}}
+              </div>
+              <br>
               <div class="card-footer text-muted">
                 {{form.grades}} درجة
               </div>
