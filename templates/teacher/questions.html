@@ -28,7 +28,7 @@
                     <div class="card-body">
                       <div class="container">
                         <div class="row row-cols-2">
-                          
+                        {% if question.question_type == 'A' %}
                           {% if question.choice_1 == True %}
                             <div class="col text-white bg-primary">{{question.choice_1}}</div>
                           {% elif question.choice_1 == False %}
@@ -47,6 +47,13 @@
                           <div class="col text-white bg-danger">{{question.choice_3}}</div>
                           {% endif %}
                           <div class="col">{{question.answer_3}}</div>
+                        {% elif question.question_type == 'B' %} 
+                          {% if question.trueAndfalse == True %}
+                            <div class="col text-white bg-primary">صح</div>
+                          {% elif question.trueAndfalse == False %}
+                            <div class="col text-white bg-danger">خطأ</div>
+                          {% endif %}
+                        {% endif %}
                         </div>
                       </div>
                     </div>
