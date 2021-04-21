@@ -109,7 +109,7 @@ def edit_questions(request, teacher_id, room_id, question_id):
             question = form.save(commit=False)
             question.subject = subject
             question.created_by = request.user
-            question.question_type = subject.question_type
+            question.question_type = questions.question_type
             question.save()
             return redirect('questions', teacher_id=teacher_id, room_id=room_id)
     else:
