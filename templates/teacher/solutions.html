@@ -30,9 +30,7 @@
                         <div class="row">
                           <div class="col">{{solution.solution}}</div>
 
-                          {% if solution.question.grades != None %}
-                                  <p class="totalGrades">{{solution.question.grades}}</p>
-                          {% endif %}
+                          
 
                         </div>
                       </div>
@@ -41,18 +39,27 @@
                         {% if solution.solution == solution.question.answer_1 %}
                             {% if solution.question.choice_1 == True %}
                                 <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                {% if solution.question.grades != None %}
+                                  <p class="totalGrades">{{solution.question.grades}}</p>
+                                {% endif %}
                             {% elif solution.question.choice_1 == False %}
                                 <p class="text-white bg-danger">الاجابة خاطئة</p>
                             {% endif %}
                         {% elif solution.solution == solution.question.answer_2 %}
                             {% if solution.question.choice_2 == True %}
                                 <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                {% if solution.question.grades != None %}
+                                  <p class="totalGrades">{{solution.question.grades}}</p>
+                                {% endif %}
                             {% elif solution.question.choice_2 == False %}
                                 <p class="text-white bg-danger">الاجابة خاطئة</p>
                             {% endif %}
                         {% elif solution.solution == solution.question.answer_3 %}
                             {% if solution.question.choice_3 == True %}
                                 <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                {% if solution.question.grades != None %}
+                                  <p class="totalGrades">{{solution.question.grades}}</p>
+                                {% endif %}
                             {% elif solution.question.choice_3 == False %}
                                 <p class="text-white bg-danger">الاجابة خاطئة</p>
                             {% endif %}
@@ -60,12 +67,18 @@
                         {% elif solution.solution == 'صح' %}
                                 {% if solution.question.trueAndfalse == True %}
                                     <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                    {% if solution.question.grades != None %}
+                                      <p class="totalGrades">{{solution.question.grades}}</p>
+                                    {% endif %}
                                 {% elif solution.question.trueAndfalse == False %}
                                     <p class="text-white bg-danger">الاجابة خاطئة</p>
                                 {% endif %}
                         {% elif solution.solution == 'خطأ' %}
                                 {% if solution.question.trueAndfalse == False %}
                                     <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                    {% if solution.question.grades != None %}
+                                      <p class="totalGrades">{{solution.question.grades}}</p>
+                                    {% endif %}
                                 {% elif solution.question.trueAndfalse == True %}
                                     <p class="text-white bg-danger">الاجابة خاطئة</p>
                                 {% endif %}
