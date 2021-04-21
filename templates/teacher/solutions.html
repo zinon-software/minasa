@@ -5,13 +5,15 @@
 
 <div class="container">
 
-<p class="salaryGrades"></p>
+
     
     {% for solution in solutions %}
         {% if forloop.first %}
         <div class="card-header text-white bg-dark py-2 px-3" align="center"> 
             <b> 
                 <mark>{{solution.student_by.name}}  </mark> 
+                
+                <mark><p class="salaryGrades"></p>  </mark> 
                 
             </b> 
         </div>
