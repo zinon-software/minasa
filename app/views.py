@@ -63,7 +63,7 @@ def teacher(request):
     subject = Subject.objects.filter(created_by=request.user)
     students = Students.objects.filter(created_by=request.user)
     if request.method == 'POST':
-        name = request.POST.get('name') + ' (شعبة = ' + str(random.randint(1,10000)) + ')'
+        name = request.POST.get('name')# + ' (شعبة = ' + str(random.randint(1,10000)) + ')'
         room = Subject(name=name, created_by=request.user)
         room.save()
         return redirect('teacher')

@@ -9,7 +9,7 @@ QUESTION_TYPE = (
 )
 
 class Subject(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True, unique=False)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_dt = models.DateTimeField(auto_now_add=True)
 
@@ -18,8 +18,8 @@ class Subject(models.Model):
 
 
 class Questions(models.Model):
-    subject = models.ForeignKey(Subject,related_name='topics',on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User,related_name='topics',on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
     question = models.CharField(max_length=255, null=True, blank=True)
     question_type = models.CharField(max_length=2, choices=QUESTION_TYPE, default = 'A')
     trueAndfalse = models.BooleanField(null=True, blank=True)
