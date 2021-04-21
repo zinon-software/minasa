@@ -14,10 +14,12 @@
                 {{form.question}}
               </div>
               <div class="card-body">
-              <div class="card-footer text-muted ">
-                <p> اجابة سوال الصح و الخطأ</p>
-                {{form.trueAndfalse}}
-              </div>
+              {% if form.question_type == 'B' %}
+                <div class="card-footer text-muted ">
+                  <p> اجابة سوال الصح و الخطأ</p>
+                  {{form.trueAndfalse}}
+                </div>
+              {% endif %}
                 <div class="container">
                   <div class="row row-cols-2">
                     <div class="col text-white bg-primary">{{form.choice_1}}</div>
