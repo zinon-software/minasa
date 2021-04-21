@@ -14,12 +14,12 @@
                 {{form.question}}
               </div>
               <div class="card-body">
-              {% if form.question_type == 'B' %}
+              {% if questions.question_type == 'B' %}
                 <div class="card-footer text-muted ">
                   <p> اجابة سوال الصح و الخطأ</p>
                   {{form.trueAndfalse}}
                 </div>
-              {% endif %}
+              {% elif questions.question_type == 'A' %}
                 <div class="container">
                   <div class="row row-cols-2">
                     <div class="col text-white bg-primary">{{form.choice_1}}</div>
@@ -30,6 +30,7 @@
                     <div class="col">{{form.answer_3}}</div>
                   </div>
                 </div>
+              {% endif %}
               </div>
               <div class="card-footer text-muted">
                 {{form.grades}} درجة

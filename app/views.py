@@ -107,7 +107,7 @@ def edit_questions(request, teacher_id, room_id, question_id):
             return redirect('questions', teacher_id=teacher_id, room_id=room_id)
     else:
         form = PostForm(instance=questions)
-    context = {'form': form, 'subject':subject,}
+    context = {'form': form, 'subject':subject, 'questions':questions,}
     return render(request, 'teacher/edit_questions.html', context)
 
 @login_required()
