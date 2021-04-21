@@ -15,6 +15,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Subject</th>
                     <th scope="col">created_dt</th>
+                    <th scope="col">مجموع الدرجات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,7 @@
                     <th scope="col"> <a href="{% url 'solutions' item.created_by.id item.subject.id item.id %}" > {{item.name}} </a></th>
                     <td>{{item.subject}}</td>
                     <td>{{item.created_dt}}</td>
+                    <td><p class="salaryGrades"></p></td>
                   </tr>
                 {% endfor %}
                 </tbody>
