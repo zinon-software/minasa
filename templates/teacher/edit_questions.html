@@ -18,21 +18,25 @@
                   {{form.trueAndfalse}}
                 </div>
               {% elif questions.question_type == 'A' %}
-                  <div class="row row-cols-2">
-                    <div class="col">{{form.answer_1}}</div>
-                    <div class="col text-white bg-primary">{{form.choice_1}}</div>
-                    <div class="col">{{form.answer_2}}</div>
-                    <div class="col text-white bg-primary">{{form.choice_2}}</div>
-                    <div class="col">{{form.answer_3}}</div>
-                    <div class="col text-white bg-primary">{{form.choice_3}}</div>
-                  </div>
-              {% endif %}
                 <div class="d-flex text-muted pt-3">
                     <div class="d-flex justify-content-between">
                       <strong class="text-gray-dark">{{form.answer_1}}</strong>
                       {{form.choice_1}}
                     </div>
                 </div>
+                <div class="d-flex text-muted pt-3">
+                    <div class="d-flex justify-content-between">
+                      <strong class="text-gray-dark">{{form.answer_2}}</strong>
+                      {{form.choice_2}}
+                    </div>
+                </div>
+                <div class="d-flex text-muted pt-3">
+                    <div class="d-flex justify-content-between">
+                      <strong class="text-gray-dark">{{form.answer_3}}</strong>
+                      {{form.choice_3}}
+                    </div>
+                </div>
+              {% endif %}
               </div>
               <div class="card-footer text-muted">
                 {{form.grades}} درجة
