@@ -18,8 +18,8 @@ class Subject(models.Model):
 
 
 class Questions(models.Model):
-    subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject,on_delete=models.CASCADE, related_name='subject')
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='user_created_by')
     question = models.CharField(max_length=255, null=True, blank=True)
     question_type = models.CharField(max_length=2, choices=QUESTION_TYPE, default = 'A')
     trueAndfalse = models.BooleanField(null=True, blank=True)
@@ -38,14 +38,14 @@ class Questions(models.Model):
 
 class Students(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True, unique=False)
-    subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject,on_delete=models.CASCADE, related_name='subject_by_student')
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='created_by_student')
     created_dt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
 class Solutions(models.Model):
-    question = models.ForeignKey(Questions,on_delete=models.CASCADE)
-    student_by = models.ForeignKey(Students,on_delete=models.CASCADE)
+    question = models.ForeignKey(Questions,on_delete=models.CASCADE, related_name='questions')
+    student_by = models.ForeignKey(Students,on_delete=models.CASCADE, related_name='students')
     solution = models.CharField(max_length=255, null=True, blank=True)
