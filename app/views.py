@@ -36,19 +36,19 @@ def examination_room(request, teacher_id, room_id):
         for question in questions:
             slou = request.POST.get(f'exampleRadios{question.id}')
             if slou == 'option1':
-                data = Solutions(question=question, student_by=student_by.id, solution=question.answer_1)
+                data = Solutions(question=question, student_by=student_by, solution=question.answer_1)
                 data.save()
             elif slou == 'option2':
-                data = Solutions(question=question, student_by=student_by.id, solution=question.answer_2)
+                data = Solutions(question=question, student_by=student_by, solution=question.answer_2)
                 data.save()
             elif slou == 'option3':
-                data = Solutions(question=question, student_by=student_by.id, solution=question.answer_3)
+                data = Solutions(question=question, student_by=student_by, solution=question.answer_3)
                 data.save()
             elif slou == 'yes':
-                data = Solutions(question=question, student_by=student_by.id, solution='صح')
+                data = Solutions(question=question, student_by=student_by, solution='صح')
                 data.save()
             elif slou == 'no':
-                data = Solutions(question=question, student_by=student_by.id, solution='خطأ')
+                data = Solutions(question=question, student_by=student_by, solution='خطأ')
                 data.save()
         return redirect('index')
 
