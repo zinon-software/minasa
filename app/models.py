@@ -37,9 +37,9 @@ class Questions(models.Model):
 
 
 class Students(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True, unique=False)
-    subject = models.ForeignKey(Subject,on_delete=models.CASCADE, related_name='subject_by_student')
-    created_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='created_by_student')
+    name = models.CharField(max_length=50, null=True, blank=True)
+    subject = models.ForeignKey(Subject,on_delete=models.CASCADE, related_name='subject_student')
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='created_student')
     created_dt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
