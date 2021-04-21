@@ -16,8 +16,15 @@
 
     <script>
     $(document).ready(function () {
-        $('.question_type').hide();
+      $('.question_type').hide();
     });
+    var total = 0;
+    $(".totalGrades").each(function(){
+      $(this).hide()
+      var salary = $(this).text()
+      total += parseInt(salary)
+    });
+    $(".salaryGrades").text(total)
     </script>
   </head>
 
