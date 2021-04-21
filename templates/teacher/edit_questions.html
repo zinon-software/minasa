@@ -18,16 +18,14 @@
                   {{form.trueAndfalse}}
                 </div>
               {% elif questions.question_type == 'A' %}
-                <div class="container">
                   <div class="row row-cols-2">
-                    <div class="col text-white bg-primary">{{form.choice_1}}</div>
                     <div class="col">{{form.answer_1}}</div>
-                    <div class="col text-white bg-primary">{{form.choice_2}}</div>
+                    <div class="col text-white bg-primary">{{form.choice_1}}</div>
                     <div class="col">{{form.answer_2}}</div>
-                    <div class="col text-white bg-primary">{{form.choice_3}}</div>
+                    <div class="col text-white bg-primary">{{form.choice_2}}</div>
                     <div class="col">{{form.answer_3}}</div>
+                    <div class="col text-white bg-primary">{{form.choice_3}}</div>
                   </div>
-                </div>
               {% endif %}
               </div>
               <div class="card-footer text-muted">
