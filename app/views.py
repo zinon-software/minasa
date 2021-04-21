@@ -6,7 +6,6 @@ from django.utils import timezone
 from django.utils.decorators import method_decorator
 from .forms import PostForm
 
-import random
 
 # Create your views here.
 
@@ -31,7 +30,7 @@ def examination_room(request, teacher_id, room_id):
     questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     if request.method == 'POST':
-        name = request.POST.get('name')+ ' ( رقم الطالب = ' + str(random.randint(100,1000000)) + ')'
+        name = request.POST.get('name')
         student_by = Students(name=name, created_by=subject.created_by, subject=subject)
         student_by.save()
         for question in questions:
@@ -63,7 +62,7 @@ def teacher(request):
     subject = Subject.objects.filter(created_by=request.user)
     students = Students.objects.filter(created_by=request.user)
     if request.method == 'POST':
-        name = request.POST.get('name')# + ' (شعبة = ' + str(random.randint(1,10000)) + ')'
+        name = request.POST.get('name')
         room = Subject(name=name, created_by=request.user)
         room.save()
         return redirect('teacher')
