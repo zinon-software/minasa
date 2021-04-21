@@ -49,9 +49,9 @@
                           <div class="col">{{question.answer_3}}</div>
                         {% elif question.question_type == 'B' %} 
                           {% if question.trueAndfalse == True %}
-                            <div class="col text-white bg-primary">صح</div>
+                            <p>صح</p>
                           {% elif question.trueAndfalse == False %}
-                            <div class="col text-white bg-danger">خطأ</div>
+                            <p>خطأ</p>
                           {% endif %}
                         {% endif %}
                         </div>

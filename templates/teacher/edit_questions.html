@@ -11,6 +11,9 @@
               <div class="card">
                 {{form.question}}
               </div>
+
+              <p class="question_type">{{form.question_type}}</p>
+              
               <div class="card-body">
               {% if questions.question_type == 'B' %}
                 <div class="card-footer text-muted ">
@@ -35,9 +38,7 @@
                       <strong class="text-gray-dark">{{form.answer_3}}</strong>
                       {{form.choice_3}}
                     </div>
-                </div>
-              {% elif questions.question_type == 'K' %}
-                    {{form.question_type}}
+                </div>                    
               {% endif %}
               </div>
               <div class="card-footer text-muted">
