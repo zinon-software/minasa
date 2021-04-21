@@ -21,6 +21,7 @@
              {{question.question}}
           </div>
           <div class="card-body">
+          {% if question.question_type == 'A' %}
             <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios1{{question}}" value="option1">
               <label class="form-check-label" for="exampleRadios1{{question}}">
@@ -39,6 +40,20 @@
                 {{question.answer_3}}
               </label>
             </div>
+          {% elif question.question_type == 'B' %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios3{{question}}" value="true">
+              <label class="form-check-label" for="exampleRadios3{{question}}">
+                صح
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios{{question.id}}" id="exampleRadios3{{question}}" value="false">
+              <label class="form-check-label" for="exampleRadios3{{question}}">
+                خطأ
+              </label>
+            </div>
+          {% endif %}
           </div>
           <div class="card-footer text-muted">
             {{question.grades}} = الدرجات  
