@@ -9,7 +9,7 @@ QUESTION_TYPE = (
 )
 
 class Subject(models.Model):
-    name = models.CharField(max_length=50, null=False, blank=True, unique=False)
+    name = models.CharField(max_length=50, null=True, blank=True, unique=False)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_dt = models.DateTimeField(auto_now_add=True)
 
