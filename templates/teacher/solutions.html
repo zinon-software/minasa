@@ -48,12 +48,26 @@
                             {% elif solution.question.choice_3 == False %}
                                 <p class="text-white bg-danger">الاجابة خاطئة</p>
                             {% endif %}
-                        {% endif %}                            
+                        {% comment %} التحقق من الصح و الخطا {% endcomment %}
+                        {% elif solution.question.question_type = 'B' %}
+                            {% if solution.solution == 'صح' %}
+                                {% if solution.question.trueAndfalse == True %}
+                                    <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                {% elif solution.question.trueAndfalse == False %}
+                                    <p class="text-white bg-danger">الاجابة خاطئة</p>
+                                {% endif %}
+                            {% elif solution.solution == 'خطأ' %}
+                                {% if solution.question.trueAndfalse == False %}
+                                    <p class="text-white bg-primary">الاجابة صحيحة</p>
+                                {% elif solution.question.trueAndfalse == True %}
+                                    <p class="text-white bg-danger">الاجابة خاطئة</p>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}                           
                     </div>
                   </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
     {% endfor %}
