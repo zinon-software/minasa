@@ -125,7 +125,7 @@ def students(request, room_id):
 
 @login_required()
 def solutions(request, students_id):
-    solution = Solutions.objects.filter(subject=students_id)
+    solution = Solutions.objects.filter(student_by=students_id)
     context = {
         'solutions': solution,
         }
