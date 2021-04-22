@@ -14,7 +14,7 @@ class Subject(models.Model):
     created_dt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return self.name
 
 
 class Questions(models.Model):
@@ -43,7 +43,7 @@ class Students(models.Model):
     created_dt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return self.name
 
 class Solutions(models.Model):
     question = models.ForeignKey(Questions,on_delete=models.CASCADE, related_name='questions')
