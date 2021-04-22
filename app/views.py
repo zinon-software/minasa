@@ -27,8 +27,9 @@ def index(request):
     return render(request, 'main/index.html', {'not_primary':not_primary})
 
 def examination_room(request, teacher_id, room_id):
-    questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
+    # questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
+    questions = subject.subject.all()
     if request.method == 'POST':
         name = request.POST.get('name')
         student_by = Students(name=name, created_by=subject.created_by, subject=subject)
