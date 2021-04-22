@@ -5,6 +5,7 @@ from django.views.generic import UpdateView
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from .forms import PostForm, NewStudentsForm
+from django.db.models import Count
 
 
 # Create your views here.
