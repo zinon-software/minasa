@@ -54,8 +54,8 @@ def examination_room(request, teacher_id, room_id):
                     data = Solutions(question=question, student_by=student_by, solution='خطأ')
                     data.save()
             return redirect('index')
-        else:
-            form = NewStudentsForm()
+    else:
+        form = NewStudentsForm()
 
     return render(request, 'main/examination_room.html', {'questions':questions, 'subject':subject, 'form':form,})
 
