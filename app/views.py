@@ -64,7 +64,7 @@ def examination_room(request, teacher_id, room_id):
 @login_required()
 def teacher(request):
     subject = Subject.objects.filter(created_by=request.user)
-    queryset = subject.subject.order_by("-created_dt").annotate(comments=Count('posts'))
+    # queryset = subject.subject.order_by("-created_dt").annotate(comments=Count('posts'))
     if request.method == 'POST':
         name = request.POST.get('name')
         room = Subject(name=name, created_by=request.user)
@@ -77,10 +77,10 @@ def teacher(request):
 
 @login_required()
 def questions(request, teacher_id, room_id):
-    topic = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
+    subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     context =  {
-        'topic': topic,
+        'topic': subject,
         'questions':questions,
         }
     return render(request, 'teacher/questions.html', context)
@@ -120,8 +120,10 @@ def edit_questions(request, teacher_id, room_id, question_id):
 
 @login_required()
 def students(request, room_id):
-    students = Students.objects.filter(subject=room_id)
-    context = {'students': students}
+    # students = Students.objects.filter(subject=room_id)
+    subject = get_object_or_404(Subject, pk=room_id)
+    questions = subject.subject_student.order_by("-created_dt").annotate(comments=Count('students'))
+    context = {'students': questions}
     return render(request, 'teacher/students.html', context)
 
 @login_required()
