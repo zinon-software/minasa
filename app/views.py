@@ -28,7 +28,6 @@ def index(request):
 
 def examination_room(request, teacher_id, room_id):
     subject = get_object_or_404(Subject, pk=room_id)
-    print(subject)
     questions = subject.subject.all()
     if request.method == 'POST':
         form = NewStudentsForm(request.POST)
@@ -121,15 +120,13 @@ def edit_questions(request, teacher_id, room_id, question_id):
 @login_required()
 def students(request, teacher_id, room_id):
     students = Students.objects.filter(subject=room_id)
-    context =  {
-        'students': students,
-        }
+    context = {'students': students}
     return render(request, 'teacher/students.html', context)
 
 @login_required()
 def solutions(request, teacher_id, room_id, students_id):
-    solution = Solutions.objects.filter(student_by=students_id)
-    context =  {
+    solution = Solutions.objects.filter(subject=students_id)
+    context = {
         'solutions': solution,
         }
     return render(request, 'teacher/solutions.html', context)
