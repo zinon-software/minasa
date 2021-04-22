@@ -40,7 +40,6 @@ class Questions(models.Model):
 class Students(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True, unique=False)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subject_student')
-    answer_2 = models.CharField(max_length=255, null=True, blank=True)
     created_dt = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
