@@ -27,7 +27,8 @@ def index(request):
     return render(request, 'main/index.html', {'not_primary':not_primary})
 
 def examination_room(request, teacher_id, room_id):
-    subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
+    subject = get_object_or_404(Subject, pk=room_id)
+    print(subject)
     questions = subject.subject.all()
     if request.method == 'POST':
         form = NewStudentsForm(request.POST)
