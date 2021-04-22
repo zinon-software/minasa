@@ -31,8 +31,7 @@ def examination_room(request, teacher_id, room_id):
     questions = subject.subject.all()
     if request.method == 'POST':
         name = request.POST.get('name')
-        student_by = Students(name=name, subject=subject)
-        student_by.save()
+        student_by = Students.objects.create(name=name, subject=subject)
         for question in questions:
             slou = request.POST.get(f'exampleRadios{question.id}')
             if slou == 'option1':
@@ -51,7 +50,6 @@ def examination_room(request, teacher_id, room_id):
                 data = Solutions(question=question, student_by=student_by, solution='خطأ')
                 data.save()
         return redirect('index')
-
 
     return render(request, 'main/examination_room.html', {'questions':questions, 'subject':subject,})
 
@@ -72,7 +70,6 @@ def teacher(request):
 
 @login_required()
 def questions(request, teacher_id, room_id):
-    
     topic = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     context =  {
