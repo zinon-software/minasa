@@ -64,7 +64,7 @@ def examination_room(request, teacher_id, room_id):
 
 @login_required()
 def teacher(request):
-    subject = Subject.objects.filter(created_by=request.user)
+    subject = Subject.objects.filter(created_by=request.user).annotate(comments=Count('subject'))
     # queryset = subject.subject.order_by("-created_dt").annotate(comments=Count('posts'))
     if request.method == 'POST':
         name = request.POST.get('name')

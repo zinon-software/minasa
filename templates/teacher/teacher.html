@@ -52,6 +52,7 @@
                     <th scope="col">تاريخ الانشاء</th>
                     <th scope="col">معرف المعلم</th>
                     <th scope="col">معرف غرفة الامتحان</th>
+                    <th scope="col">posts</th>
                     <th scope="col">الاجابات</th>
                   </tr>
                 </thead>
@@ -62,6 +63,7 @@
                     <td>{{ item.created_dt }}</td>
                     <td>{{ item.created_by.id}}</td>
                     <td>{{ item.id }}</td>
+                    <td>{{ item.comments }}</td>
                     <td > <a href="{% url 'students' item.id %}" > Solutions {{ item.name}} </a> </td>
                   </tr>
                   {%endfor%}
