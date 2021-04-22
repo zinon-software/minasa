@@ -72,6 +72,7 @@ def teacher(request):
 
 @login_required()
 def questions(request, teacher_id, room_id):
+    
     topic = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     questions = Questions.objects.filter(created_by=teacher_id, subject=room_id)
     context =  {
