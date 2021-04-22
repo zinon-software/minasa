@@ -118,13 +118,13 @@ def edit_questions(request, teacher_id, room_id, question_id):
     return render(request, 'teacher/edit_questions.html', context)
 
 @login_required()
-def students(request, teacher_id, room_id):
+def students(request, room_id):
     students = Students.objects.filter(subject=room_id)
     context = {'students': students}
     return render(request, 'teacher/students.html', context)
 
 @login_required()
-def solutions(request, teacher_id, room_id, students_id):
+def solutions(request, students_id):
     solution = Solutions.objects.filter(subject=students_id)
     context = {
         'solutions': solution,

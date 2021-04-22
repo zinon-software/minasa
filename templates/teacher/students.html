@@ -21,7 +21,7 @@
                 <tbody>
                 {% for item in students %}
                   <tr>
-                    <th scope="col"> <a href="{% url 'solutions' item.created_by.id item.subject.id item.id %}" > {{item.name}} </a></th>
+                    <th scope="col"> <a href="{% url 'solutions' item.id %}" > {{item.name}} </a></th>
                     <td>{{item.subject}}</td>
                     <td>{{item.created_dt}}</td>
                     <td><p class="salaryGrades"></p></td>

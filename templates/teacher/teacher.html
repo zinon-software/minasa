@@ -62,7 +62,7 @@
                     <td>{{ item.created_dt }}</td>
                     <td>{{ item.created_by.id}}</td>
                     <td>{{ item.id }}</td>
-                    <td > <a href="{% url 'students' item.created_by.id item.id %}" > Solutions {{ item.name}} </a> </td>
+                    <td > <a href="{% url 'students' item.id %}" > Solutions {{ item.name}} </a> </td>
                   </tr>
                   {%endfor%}
   
