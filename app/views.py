@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView
 from django.utils import timezone
 from django.utils.decorators import method_decorator
-from .forms import PostForm
+from .forms import PostForm, NewStudentsForm
 
 
 # Create your views here.
@@ -30,28 +30,34 @@ def examination_room(request, teacher_id, room_id):
     subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
     questions = subject.subject.all()
     if request.method == 'POST':
-        name = request.POST.get('name')
-        student_by = Students.objects.create(name=name, subject=subject)
-        for question in questions:
-            slou = request.POST.get(f'exampleRadios{question.id}')
-            if slou == 'option1':
-                data = Solutions(question=question, student_by=student_by, solution=question.answer_1)
-                data.save()
-            elif slou == 'option2':
-                data = Solutions(question=question, student_by=student_by, solution=question.answer_2)
-                data.save()
-            elif slou == 'option3':
-                data = Solutions(question=question, student_by=student_by, solution=question.answer_3)
-                data.save()
-            elif slou == 'yes':
-                data = Solutions(question=question, student_by=student_by, solution='صح')
-                data.save()
-            elif slou == 'no':
-                data = Solutions(question=question, student_by=student_by, solution='خطأ')
-                data.save()
-        return redirect('index')
+        form = NewStudentsForm(request.POST)
+        if form.is_valid():
+            student_by = form.save(commit=False)
+            student_by.subject = subject
+            student_by.save()
 
-    return render(request, 'main/examination_room.html', {'questions':questions, 'subject':subject,})
+            for question in questions:
+                slou = request.POST.get(f'exampleRadios{question.id}')
+                if slou == 'option1':
+                    data = Solutions(question=question, student_by=student_by, solution=question.answer_1)
+                    data.save()
+                elif slou == 'option2':
+                    data = Solutions(question=question, student_by=student_by, solution=question.answer_2)
+                    data.save()
+                elif slou == 'option3':
+                    data = Solutions(question=question, student_by=student_by, solution=question.answer_3)
+                    data.save()
+                elif slou == 'yes':
+                    data = Solutions(question=question, student_by=student_by, solution='صح')
+                    data.save()
+                elif slou == 'no':
+                    data = Solutions(question=question, student_by=student_by, solution='خطأ')
+                    data.save()
+            return redirect('index')
+        else:
+            form = NewStudentsForm()
+
+    return render(request, 'main/examination_room.html', {'questions':questions, 'subject':subject, 'form':form,})
 
 
 
