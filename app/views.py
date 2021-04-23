@@ -118,6 +118,10 @@ def edit_questions(request, teacher_id, room_id, question_id):
         form = PostForm(instance=questions)
     context = {'form': form, 'subject':subject, 'questions':questions,}
     return render(request, 'teacher/edit_questions.html', context)
+@login_required()
+def delete_question(request, teacher_id, room_id, question_id):
+    Questions.objects.get(id=question_id).delete()
+    return redirect('questions', teacher_id=teacher_id, room_id=room_id)
 
 @login_required()
 def students(request, room_id):
