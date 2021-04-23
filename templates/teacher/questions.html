@@ -64,6 +64,7 @@
                 {% if question.created_by == user %}
                   <div class="mt-3">
                     <a href="{% url 'edit_questions' question.subject.created_by.pk question.subject.pk question.pk %}" class="btn btn-primary btn-sm" role="button">تعديل</a>
+                    <a href="{% url 'edit_questions' question.subject.created_by.pk question.subject.pk question.pk %}" class="btn btn-degri btn-sm" role="button">تعديل</a>
                   </div>
                 {% endif %}
               </div>
