@@ -51,22 +51,27 @@
                 <thead style="background-color: #e3f2fd;">
                   <tr>
                     <th scope="col">إسم غرفة الامتحان</th>
-                    <th scope="col">تاريخ الانشاء</th>
                     <th scope="col">معرف المعلم</th>
                     <th scope="col">معرف غرفة الامتحان</th>
                     <th scope="col">عدد الاسئلة</th>
                     <th scope="col">الاجابات</th>
+                    <th scope="col">تاريخ الانشاء</th>
+                    <th scope="col">الاعدادات</th>
                   </tr>
                 </thead>
                 <tbody>
                   {%for item in subject %}
                   <tr>
                     <td > <a href="{% url 'questions' item.created_by.id item.id %}" > {{ item.name}} </a> </td>
-                    <td>{{ item.created_dt|naturaltime }}</td>
                     <td>{{ item.created_by.id}}</td>
                     <td>{{ item.id }}</td>
                     <td>{{ item.comments }}</td>
-                    <td > <a href="{% url 'students' item.id %}" > إجابات {{ item.name}} </a> </td>
+                    <td > <a href="{% url 'students' item.id %}" > {{ item.name}} </a> </td>
+                    <td>{{ item.created_dt|naturaltime }}</td>
+                    <td>
+                      <a href="{% url 'update' item.id %}"><i class="fas fa-edit"></i></a>
+                      <a class="text-danger" href="{% url 'delete' item.id %}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
                   </tr>
                   {%endfor%}
   
