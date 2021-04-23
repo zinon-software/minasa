@@ -56,7 +56,6 @@
                     <th scope="col">عدد الاسئلة</th>
                     <th scope="col">الاجابات</th>
                     <th scope="col">تاريخ الانشاء</th>
-                    <th scope="col">الاعدادات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,10 +67,6 @@
                     <td>{{ item.comments }}</td>
                     <td > <a href="{% url 'students' item.id %}" > {{ item.name}} </a> </td>
                     <td>{{ item.created_dt|naturaltime }}</td>
-                    <td>
-                      <a href="#"><i class="fas fa-edit"></i></a>
-                      <a class="text-danger" href="#"><i class="fas fa-trash-alt"></i></a>
-                    </td>
                   </tr>
                   {%endfor%}
   
