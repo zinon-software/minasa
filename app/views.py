@@ -65,7 +65,7 @@ def examination_room(request, teacher_id, room_id):
 @login_required()
 def teacher(request):
     subject = Subject.objects.filter(created_by=request.user).annotate(comments=Count('subject'))
-    # queryset = subject.subject.order_by("-created_dt").annotate(comments=Count('posts'))
+    #  .annotate(comments=Count('posts')) دالة لحساب عدد الحقول من علاقة معينة
     if request.method == 'POST':
         name = request.POST.get('name')
         room = Subject(name=name, created_by=request.user)
@@ -88,7 +88,7 @@ def questions(request, teacher_id, room_id):
 
 @login_required()
 def reply_questions(request, teacher_id, room_id):
-    subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
+    subject = get_object_or_404(Subject, pk=room_id)
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -105,7 +105,7 @@ def reply_questions(request, teacher_id, room_id):
 @login_required()
 def edit_questions(request, teacher_id, room_id, question_id):
     questions = Questions.objects.get(id=question_id)
-    subject = get_object_or_404(Subject, created_by=teacher_id, pk=room_id)
+    subject = get_object_or_404(Subject, pk=room_id)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=questions)
         if form.is_valid():

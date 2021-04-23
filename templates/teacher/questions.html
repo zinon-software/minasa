@@ -32,19 +32,19 @@
                           {% if question.choice_1 == True %}
                             <div class="col text-white bg-primary">{{question.choice_1}}</div>
                           {% elif question.choice_1 == False %}
-                          <div class="col text-white bg-danger">{{question.choice_1}}</div>
+                          <div>{{question.choice_1}}</div>
                           {% endif %}
                           <div class="col">{{question.answer_1}}</div>
                           {% if question.choice_2 == True %}
                             <div class="col text-white bg-primary">{{question.choice_2}}</div>
                           {% elif question.choice_2 == False %}
-                          <div class="col text-white bg-danger">{{question.choice_2}}</div>
+                          <div>{{question.choice_2}}</div>
                           {% endif %}
                           <div class="col">{{question.answer_2}}</div>
                           {% if question.choice_3 == True %}
                             <div class="col text-white bg-primary">{{question.choice_3}}</div>
                           {% elif question.choice_3 == False %}
-                          <div class="col text-white bg-danger">{{question.choice_3}}</div>
+                          <div>{{question.choice_3}}</div>
                           {% endif %}
                           <div class="col">{{question.answer_3}}</div>
                         {% elif question.question_type == 'B' %} 
