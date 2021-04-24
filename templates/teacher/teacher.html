@@ -5,12 +5,7 @@
 {% block content %}
 
 
-<div class="container pb-5">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Examination Room</h5>
+<div class="row p-4">
           <div class="mb-4">
             <!-- <a href="#" class="btn btn-primary">New Room</a> -->
             <!-- Button trigger modal -->
@@ -48,56 +43,29 @@
             </div>
             
           </div>
-            <table class="table" >
-                <thead style="background-color: #e3f2fd;">
-                  <tr>
-                    <th scope="col">إسم غرفة الامتحان</th>
-                    <th scope="col">معرف المعلم</th>
-                    <th scope="col">معرف غرفة الامتحان</th>
-                    <th scope="col">عدد الاسئلة</th>
-                    <th scope="col">الاجابات</th>
-                    <th scope="col">تاريخ الانشاء</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {%for item in subject %}
-                  <tr>
-                    <td > <a href="{% url 'questions' item.created_by.id item.id %}" > {{ item.name}} </a> </td>
-                    <td>{{ item.created_by.id}}</td>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.comments }}</td>
-                    <td > <a href="{% url 'students' item.id %}" > {{ item.name}} </a> </td>
-                    <td>{{ item.created_dt|naturaltime }}</td>
-                  </tr>
-                  {%endfor%}
-  
-                </tbody>
-            </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
+{%for item in subject %}
   <div class="col-sm-6">
-    <div class="card">
+    <div class="card m-2">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{ item.name}}</h5>
+        <p class="card-button">
+          <span class="badge bg-primary">معرف المعلم <span class="badge bg-secondary">{{ item.created_by.id}}</span></span>
+          <span class="badge bg-secondary">معرف المادة <span class="badge bg-secondary">{{ item.id }}</span></span>
+          <span class="badge bg-info text-dark">عدد الاسئلة <span class="badge bg-secondary">{{ item.comments }}</span></span>
+          <span class="badge bg-warning text-dark">عدد الاجابات <span class="badge bg-secondary">4</span></span>
+          <span class="badge bg-success">الحالة <span class="badge bg-danger">4</span></span>
+          <span class="badge bg-danger">حذف <span class="badge bg-secondary">4</span></span>
+          
+          
+          
+        </p>
+        <a href="{% url 'questions' item.created_by.id item.id %}" class="btn btn-primary"> الاسئلة</a>
+        <a href="{% url 'students' item.id %}" class="btn btn-primary"> الاجوبة</a>
+        <span class="badge bg-light text-dark">تاريخ النشر <span class="badge bg-secondary">{{ item.created_dt|naturaltime }}</span></span>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
+{%endfor%}
 </div>
 
 {% endblock content %}

@@ -15,18 +15,63 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    {% comment %} سكربت حساب الدرجات {% endcomment %}
     <script>
-    $(document).ready(function () {
-      $('.question_type').hide();
-      var total = 0;
-      $(".totalGrades").each(function(){
-        $(this).hide();
-        var salary = $(this).text();
-        total += parseInt(salary);
+      $(document).ready(function () {
+        $('.question_type').hide();
+        var total = 0;
+        $(".totalGrades").each(function(){
+          $(this).hide();
+          var salary = $(this).text();
+          total += parseInt(salary);
+        });
+        $(".salaryGrades").text(total);
       });
-      $(".salaryGrades").text(total);
+    </script>
+
+
+    {% comment %} سكربت العداد التنازلي {% endcomment %}
+    <script>
+    $(function(){
+      var time = $(".countdown").text();
+      $('.countdown').hide();
+      var hours = 0;
+      var min = 0;
+      var sec = 0;
+
+      $(document).ready(function () {
+        
+      var MyClock = setInterval(function () {
+          
+          hours = parseInt((time % (60 * 60 * 24)) / (3600));
+          min = parseInt((time % (60 * 60)) / 60);
+          sec = time % 60;
+          if(sec < 10){
+            sec = "0" + sec
+          }
+          if(min < 10){
+            min = "0" + min
+          }
+          if(hours < 10){
+            hours = "0" + hours
+          }
+          $(".countDown").text(hours + ":" + min + ":" + sec);
+          if(time == 150){
+            $(".countDown").css("color",'red');
+          }
+          if(time == 0){
+            clearInterval(MyClock);
+            $('.countDownHide').hide();
+          }
+
+          time--;
+        },1000);
+
+      });
     });
     </script>
+
+
   </head>
 
   <body>

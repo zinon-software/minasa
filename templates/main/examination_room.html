@@ -6,6 +6,8 @@
 <div class="bd-example">
   <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">مرحباً!</h4>
+    <h1 class="countdown">66</h1>
+    <h1 class="countDown">00:00:00</h1>
     <p> تم تقديم هذا الامتحان من طرف  {{subject.created_by.username}}.</p>
     <p class="mb-0">تاكد من كتابة اسمك الرباعي عند الانتهاء من الامتحان.</p>
   </div>
@@ -13,7 +15,7 @@
 
 <form method="Post">
   {% csrf_token %} 
-  <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="countDownHide accordion accordion-flush" id="accordionFlushExample">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       {% for question in questions %}
         <div class="card text-center">
