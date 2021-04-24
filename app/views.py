@@ -127,7 +127,7 @@ def delete_question(request, teacher_id, room_id, question_id):
 @login_required()
 def students(request, room_id):
     # students = Students.objects.filter(subject=room_id)
-    subject = get_object_or_404(Subject, pk=room_id)
+    subject = get_object_or_404(Subject, pk=room_id).annotate(question=Count('subject'))
     questions = subject.subject_student.order_by("-created_dt").annotate(comments=Count('students'))
     context = {'students': questions}
     return render(request, 'teacher/students.html', context)
